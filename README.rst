@@ -101,25 +101,25 @@ From your command line::
 Or in Python::
 
     import qrcode
-    import qrcode.image.svg
+    import qrcode.image.svg_image
 
     if method == 'basic':
         # Simple factory, just a set of rects.
-        factory = qrcode.image.svg.SvgImage
+        factory = qrcode.image.svg_image.SvgImage
     elif method == 'fragment':
         # Fragment factory (also just a set of rects)
-        factory = qrcode.image.svg.SvgFragmentImage
+        factory = qrcode.image.svg_image.SvgFragmentImage
     else:
         # Combined path factory, fixes white space that may occur when zooming
-        factory = qrcode.image.svg.SvgPathImage
+        factory = qrcode.image.svg_image.SvgPathImage
 
     img = qrcode.make('Some data here', image_factory=factory)
 
 Two other related factories are available that work the same, but also fill the
 background of the SVG with white::
 
-    qrcode.image.svg.SvgFillImage
-    qrcode.image.svg.SvgPathFillImage
+    qrcode.image.svg_image.SvgFillImage
+    qrcode.image.svg_image.SvgPathFillImage
 
 
 Pure Python PNG
@@ -137,5 +137,5 @@ From your command line::
 Or in Python::
 
     import qrcode
-    from qrcode.image.pure import PymagingImage
+    from qrcode.image.pure_image import PymagingImage
     img = qrcode.make('Some data here', image_factory=PymagingImage)

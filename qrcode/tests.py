@@ -1,9 +1,9 @@
 import six
 import qrcode
-import qrcode.image.svg
+import qrcode.image.svg_image
 
 try:
-    import qrcode.image.pure
+    import qrcode.image.pure_image
     import pymaging_png  # ensure that PNG support is installed
 except ImportError:
     pymaging_png = None
@@ -77,20 +77,20 @@ class QRCodeTests(unittest.TestCase):
     def test_render_svg(self):
         qr = qrcode.QRCode()
         qr.add_data(UNICODE_TEXT)
-        img = qr.make_image(image_factory=qrcode.image.svg.SvgImage)
+        img = qr.make_image(image_factory=qrcode.image.svg_image.SvgImage)
         img.save(six.BytesIO())
 
     def test_render_svg_path(self):
         qr = qrcode.QRCode()
         qr.add_data(UNICODE_TEXT)
-        img = qr.make_image(image_factory=qrcode.image.svg.SvgPathImage)
+        img = qr.make_image(image_factory=qrcode.image.svg_image.SvgPathImage)
         img.save(six.BytesIO())
 
     @unittest.skipIf(not pymaging_png, "Requires pymaging with PNG support")
     def test_render_pymaging_png(self):
         qr = qrcode.QRCode()
         qr.add_data(UNICODE_TEXT)
-        img = qr.make_image(image_factory=qrcode.image.pure.PymagingImage)
+        img = qr.make_image(image_factory=qrcode.image.pure_image.PymagingImage)
         img.save(six.BytesIO())
 
     def test_optimize(self):

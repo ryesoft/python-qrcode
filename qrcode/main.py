@@ -179,11 +179,10 @@ class QRCode:
             image_factory = self.image_factory
             if image_factory is None:
                 # Use PIL by default
-                from qrcode.image.pil import PilImage
+                from qrcode.image.pil_image import PilImage
                 image_factory = PilImage
 
-        im = image_factory(
-            self.border, self.modules_count, self.box_size, **kwargs)
+        im = image_factory(self.border, self.modules_count, self.box_size, **kwargs)
         for r in range(self.modules_count):
             for c in range(self.modules_count):
                 if self.modules[r][c]:
