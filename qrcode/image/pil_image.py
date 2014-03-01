@@ -20,7 +20,7 @@ class PilImage(qrcode.image.base.BaseImage):
         else:
             self.colorer = colorer
             
-        img = Image.new("RGBA", (self.pixel_size, self.pixel_size), bgColor or "white")
+        img = Image.new("RGB", (self.pixel_size, self.pixel_size), bgColor or "white")
         self._idr = ImageDraw.Draw(img)
         return img
 
